@@ -4,7 +4,10 @@
         this.closeBtn = null;
         this.modal = null;
         this.overlay = null;
-        
+        this.content = "";
+        this.contentHolder = null;
+        this.modalBody = null;
+
         this.transitionEnd = transitionSelected();
 
         var defaults = {
@@ -20,7 +23,10 @@
 
         Modal.prototype.open = function(){
             buildModal.call(this);
-            initializeEvents.call(this);
+            // initializeEvents.call(this);
+            if(this.closeBtn){
+                this.closeBtn.addEventListener("click",this.close.bind(this));
+            }
             window.getComputedStyle(this.modal).height;
             this.modal.className = this.modal.className+" modal-open";
             this.overlay.className = this.overlay.className + " modal-open";
@@ -42,21 +48,35 @@
             });
         }
 
+        Modal.prototype.changeContent = function(content){
+            if(this){
+                if(typeof content == "string"){
+                    this.options.content = content;
+                }
+                else{
+                    this.content = this.options.content.innerHTML;
+                }
+            }
+            else{
+                console.log("no modal found");
+            }
+        }
+
         function buildModal(){
-            var content,contentHolder, modalBody;
+            // var content,contentHolder, modalBody;
             /*
              * If content is an HTML string, append the HTML string.
             * If content is a domNode, append its content.
             */
 
             if (typeof(this.options.content) === "string") {
-                content = this.options.content;
+                this.content = this.options.content;
             }
             else{
-                content = this.options.content.innerHTML;
+                this.content = this.options.content.innerHTML;
             }
 
-            modalBody = document.createDocumentFragment();
+            this.modalBody = document.createDocumentFragment();
 
             this.modal = document.createElement("div");
             this.modal.className = "modal-body ";
@@ -72,17 +92,18 @@
             if(this.options.overlay === true){
                 this.overlay = document.createElement("div");
                 this.overlay.className = "overlay modal-overlay";
-                modalBody.appendChild(this.overlay);
+                this.modalBody.appendChild(this.overlay);
             }
 
-            contentHolder = document.createElement("div");
-            contentHolder.className = "modal-content";
-            contentHolder.innerHTML = content;
-            this.modal.appendChild(contentHolder);
+            this.contentHolder = document.createElement("div");
+            this.contentHolder.className = "modal-content";
+            this.contentHolder.innerHTML = this.content;
+            this.modal.appendChild(this.contentHolder);
 
-            modalBody.appendChild(this.modal);
-            document.body.appendChild(modalBody);
+            this.modalBody.appendChild(this.modal);
+            document.body.appendChild(this.modalBody);
         }
+
         function extendDefaults(source, properties) {
             var property;
             for (property in properties) {
@@ -94,10 +115,13 @@
         }
 
         function initializeEvents(){
-            if(this.closeBtn)
+            if(this.closeBtn){
                 this.closeBtn.addEventListener("click",this.close.bind(this));
-            if(this.overlay)
-                this.overlay.addEventListener("click",this.close.bind(this));
+            }
+            // if(this.overlay){
+            //     this.overlay.addEventListener("click",this.close.bind(this));
+            // }
+
         }
 
         function transitionSelected(){

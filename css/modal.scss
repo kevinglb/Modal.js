@@ -13,7 +13,7 @@ html, body{
 	right: 0;
 	bottom: 0;
 	opacity: 0;
-	background-color: rgba(242,242,242,0.8);
+	background-color: rgba(0,0,0,0.8);
 	z-index: 1000;
 	height: 100%;
 	width: 100%;
@@ -28,12 +28,14 @@ html, body{
 	}
 }
 
-
 .modal-body{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	opacity: 0;
+	z-index:1001;
+	max-width:720px;
+	margin: 0 auto;
 	-webkit-transition: 0.2s all ease;
        -moz-transition: 0.2s all ease;
         -ms-transition: 0.2s all ease;
@@ -42,6 +44,10 @@ html, body{
     &.modal-open{
     	opacity: 1;
     	display: block;
+    }
+
+    .modal-content{
+    	
     }
 
 }
