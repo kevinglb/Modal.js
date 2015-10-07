@@ -12,6 +12,16 @@
     </head>
 
     <body>       
-      <script type="text/javascript"></script>
+      <button class="button">Click Me</button>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          var myModal = new Modal({
+            content:" the new contet for modal"
+          });
+          $(".button").click(function(){
+            myModal.open();
+            });
+        });
+      </script>
     </body>
 </html>

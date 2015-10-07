@@ -12,7 +12,7 @@
 
         var defaults = {
             autoOpen: false,
-            className: "",
+            className: "animated-drop",
             closeBtn: true,
             content: "",
             overlay: true
@@ -28,8 +28,10 @@
                 this.closeBtn.addEventListener("click",this.close.bind(this));
             }
             window.getComputedStyle(this.modal).height;
-            this.modal.className = this.modal.className+" modal-open";
+            
             this.overlay.className = this.overlay.className + " modal-open";
+            this.modal.className = this.modal.className+(this.modal.offsetHeight > window.innerHeight ?
+        " modal-open modal-anchored" : " modal-open");;
 
         }
         Modal.prototype.close = function(){
@@ -41,7 +43,6 @@
                 console.log(this.transitionend);
                 _this.modal.parentNode.removeChild(_this.modal);  
             });
-
             this.overlay.addEventListener(this.transitionEnd,function(){
                 if(_this.overlay.parentNode)
                     _this.overlay.parentNode.removeChild(_this.overlay);
@@ -79,7 +80,7 @@
             this.modalBody = document.createDocumentFragment();
 
             this.modal = document.createElement("div");
-            this.modal.className = "modal-body ";
+            this.modal.className = "modal-body "+this.options.className;
             
 
             if (this.options.closeBtn === true) {
