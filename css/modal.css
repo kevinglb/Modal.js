@@ -15,28 +15,60 @@ html, body {
   z-index: 1000;
   height: 100%;
   width: 100%;
-  -webkit-transition: 0.2s all ease;
-  -moz-transition: 0.2s all ease;
-  -ms-transition: 0.2s all ease;
-  -o-transition: 0.2s all ease;
-  transition: 0.2s all ease; }
+  -webkit-transition: 200ms all 200ms ease;
+  -moz-transition: 200ms all 200ms ease;
+  -ms-transition: 200ms all 200ms ease;
+  -o-transition: 200ms all 200ms ease;
+  transition: 200ms all 200ms ease; }
   .modal-overlay.modal-open {
     opacity: 1;
-    display: block; }
+    display: block;
+    -webkit-transition: 200ms all 0ms ease;
+    -moz-transition: 200ms all 0ms ease;
+    -ms-transition: 200ms all 0ms ease;
+    -o-transition: 200ms all 0ms ease;
+    transition: 200ms all 0ms ease; }
+  .modal-overlay.animated-drop {
+    -webkit-transition: 400ms all 400ms ease;
+    -moz-transition: 400ms all 400ms ease;
+    -ms-transition: 400ms all 400ms ease;
+    -o-transition: 400ms all 400ms ease;
+    transition: 400ms all 400ms ease; }
+    .modal-overlay.animated-drop.modal-open {
+      opacity: 1;
+      display: block;
+      -webkit-transition: 400ms all 400ms ease;
+      -moz-transition: 400ms all 400ms ease;
+      -ms-transition: 400ms all 400ms ease;
+      -o-transition: 400ms all 400ms ease;
+      transition: 400ms all 400ms ease; }
 
 .modal-body {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   opacity: 0;
   z-index: 1001;
-  max-width: 720px;
+  max-width: 420px;
   margin: 0 auto;
-  -webkit-transition: 0.2s all ease;
-  -moz-transition: 0.2s all ease;
-  -ms-transition: 0.2s all ease;
-  -o-transition: 0.2s all ease;
-  transition: 0.2s all ease; }
+  background-color: #fff;
+  -webkit-transition: 200ms all 200ms ease;
+  -moz-transition: 200ms all 200ms ease;
+  -ms-transition: 200ms all 200ms ease;
+  -o-transition: 200ms all 200ms ease;
+  transition: 200ms all 200ms ease; }
+  .modal-body.animated-drop {
+    top: -100%;
+    -webkit-transition: 400ms all 300ms ease;
+    -moz-transition: 400ms all 300ms ease;
+    -ms-transition: 400ms all 300ms ease;
+    -o-transition: 400ms all 300ms ease;
+    transition: 400ms all 300ms ease; }
+    .modal-body.animated-drop.modal-open {
+      top: 50%;
+      -webkit-transition: 400ms all 300ms ease;
+      -moz-transition: 400ms all 300ms ease;
+      -ms-transition: 400ms all 300ms ease;
+      -o-transition: 400ms all 300ms ease;
+      transition: 400ms all 300ms ease; }
   .modal-body.modal-open {
     opacity: 1;
     display: block; }
