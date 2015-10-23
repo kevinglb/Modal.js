@@ -7,7 +7,6 @@
         // this.content = "";
         // this.contentHolder = null;
         // this.modalBody = null;
-
         this.transitionEnd = transitionSelected();
 
         var defaults = {
@@ -22,7 +21,6 @@
         }
 
         Modal.prototype.open = function(){
-            
             buildModal.call(this);
             var _this = this;
             // initializeEvents.call(this);
@@ -124,7 +122,7 @@
             //     this.overlay.addEventListener("click",this.close.bind(this));
             // }
         }
-
+        //determine with transitionend it has
         function transitionSelected(){
             var t,
                 el = document.createElement("div");

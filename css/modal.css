@@ -23,25 +23,30 @@ html, body {
   .modal-overlay.modal-open {
     opacity: 1;
     display: block;
-    -webkit-transition: 200ms all 0ms ease;
-    -moz-transition: 200ms all 0ms ease;
-    -ms-transition: 200ms all 0ms ease;
-    -o-transition: 200ms all 0ms ease;
-    transition: 200ms all 0ms ease; }
+    -webkit-transition: 200ms all 200ms ease;
+    -moz-transition: 200ms all 200ms ease;
+    -ms-transition: 200ms all 200ms ease;
+    -o-transition: 200ms all 200ms ease;
+    transition: 200ms all 200ms ease; }
   .modal-overlay.animated-drop {
     -webkit-transition: 400ms all 400ms ease;
     -moz-transition: 400ms all 400ms ease;
     -ms-transition: 400ms all 400ms ease;
     -o-transition: 400ms all 400ms ease;
-    transition: 400ms all 400ms ease; }
+    transition: 400ms all 400ms ease;
+    -webkit-transition: 400ms all 300ms ease;
+    -moz-transition: 400ms all 300ms ease;
+    -ms-transition: 400ms all 300ms ease;
+    -o-transition: 400ms all 300ms ease;
+    transition: 400ms all 300ms ease; }
     .modal-overlay.animated-drop.modal-open {
       opacity: 1;
       display: block;
-      -webkit-transition: 400ms all 400ms ease;
-      -moz-transition: 400ms all 400ms ease;
-      -ms-transition: 400ms all 400ms ease;
-      -o-transition: 400ms all 400ms ease;
-      transition: 400ms all 400ms ease; }
+      -webkit-transition: 400ms all 0ms ease;
+      -moz-transition: 400ms all 0ms ease;
+      -ms-transition: 400ms all 0ms ease;
+      -o-transition: 400ms all 0ms ease;
+      transition: 400ms all 0ms ease; }
 
 .modal-body {
   position: relative;
@@ -54,14 +59,14 @@ html, body {
   -moz-transition: 200ms all 200ms ease;
   -ms-transition: 200ms all 200ms ease;
   -o-transition: 200ms all 200ms ease;
-  transition: 200ms all 200ms ease; }
+  transition: 200ms all 200ms ease;
+  -webkit-transition: 400ms all 0ms ease;
+  -moz-transition: 400ms all 0ms ease;
+  -ms-transition: 400ms all 0ms ease;
+  -o-transition: 400ms all 0ms ease;
+  transition: 400ms all 0ms ease; }
   .modal-body.animated-drop {
-    top: -100%;
-    -webkit-transition: 400ms all 300ms ease;
-    -moz-transition: 400ms all 300ms ease;
-    -ms-transition: 400ms all 300ms ease;
-    -o-transition: 400ms all 300ms ease;
-    transition: 400ms all 300ms ease; }
+    top: -50%; }
     .modal-body.animated-drop.modal-open {
       top: 50%;
       -webkit-transition: 400ms all 300ms ease;

@@ -37,31 +37,17 @@ html, body{
   &.modal-open{
       opacity: 1;
       display:block;
-      @include transition(200ms,0ms);
+      @include transition(200ms,200ms);
     }
-  // -webkit-transition: 200ms all 200ms ease;
-  //   -moz-transition: 200ms all 200ms ease;
-  //   -ms-transition: 200ms all 200ms ease;
-  //   -o-transition: 200ms all 200ms ease;
-  //   transition: 200ms all 200ms ease;
   &.animated-drop{
     @include transition(400ms,400ms);
-    // &.modal-open{
-    //   -webkit-transition: 500ms all  ease;
-    // -moz-transition: 500ms all  ease;
-    // -ms-transition: 500ms all  ease;
-    // -o-transition: 500ms all  ease;
-    // transition: 500ms all  ease;
-    // }
     &.modal-open{
       opacity: 1;
       display:block;
-      @include transition(400ms,400ms);
-    
+      @include transition(400ms,0ms);
     }
+    @include transition(400ms, 300ms);
   }
-  
-	
 }
 
 .modal-body{
@@ -73,21 +59,18 @@ html, body{
   background-color:#fff;
   @include transition(200ms,200ms);
     &.animated-drop{
-    	top: -100%;
-    	@include transition(400ms,300ms);
-          //   &.modal-anchored{
-    			   // @include transform(0,-50%,0)
-          //   	}
-            &.modal-open{
-              
-            	top:50%;
-           		@include transition(400ms, 300ms);
-            }
+    	top: -50%;
+      &.modal-open{
+          top:50%;
+           @include transition(400ms, 300ms);
+      }
+
     }
     &.modal-open{
       opacity: 1;
       display: block;
     }
+    @include transition(400ms, 0ms);
     
 }
 
