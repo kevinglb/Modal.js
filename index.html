@@ -11,15 +11,27 @@
         <title>Modal JS Test</title>
     </head>
 
-    <body>       
-      <button class="button">Click Me</button>
+    <body>
+      <div class="modal-container">
+        <div class="modal-wrap inline-wrap">
+          <button class="button modal-trigger" data-target="1">Click Me(Drop)</button>
+        </div>
+        <div class="modal-wrap inline-wrap">
+          <button class="button modal-trigger" data-target="2">Click Me(Expand)</button>
+        </div>  
+        <div class="modal-wrap inline-wrap">
+          <button class="button modal-trigger" data-target="3">Click Me(Fade)</button>
+        </div>       
+      </div>
       <script type="text/javascript">
         $(document).ready(function(){
-          var myModal = new Modal({
-            content:" the new contet for modal"
+          var myModal_drop = new Modal({
+            content:"the new contet for modal",
+
           });
-          $(".button").click(function(){
-            myModal.open();
+          $(".button").click(function(e){
+            var i = this.getAttribute("data-target");
+            myModal_drop.open(i);
             });
         });
       </script>

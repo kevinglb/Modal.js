@@ -1,6 +1,8 @@
 (function(){
     this.Modal = function(){
-        
+        var doc = document;
+        var buttonList = Array.prototype.slice.call(doc.querySelectorAll('button'));
+        console.log(buttonList);
         this.closeBtn = null;
         this.modal = null;
         this.overlay = null;
@@ -11,7 +13,7 @@
 
         var defaults = {
             autoOpen: false,
-            className: "animated-drop",
+            type: "animated-drop",
             closeBtn: true,
             content: "",
             overlay: true
@@ -20,17 +22,17 @@
             this.options = extendDefaults(defaults, arguments[0]);
         }
 
-        Modal.prototype.open = function(){
-            buildModal.call(this);
+        Modal.prototype.open = function(index){
+            buildModal.call(this,index);
             var _this = this;
             // initializeEvents.call(this);
-            if(this.closeBtn){
-                this.closeBtn.addEventListener("click",this.close.bind(this));
+            if(_this.closeBtn){
+                _this.closeBtn.addEventListener("click",_this.close.bind(_this));
             }
-            window.getComputedStyle(this.modal).height;
+            window.getComputedStyle(_this.modal).height;
             
-            this.overlay.className += " modal-open";
-            this.modal.className += " modal-open";
+            _this.overlay.className += " modal-open";
+            _this.modal.className += " modal-open";
         }
 
         Modal.prototype.close = function(){
@@ -65,8 +67,17 @@
             }
         }
 
-        function buildModal(){
-            var content,contentHolder, modalBody;
+        function buildModal(index){
+            var content,
+                contentHolder, 
+                modalBody,
+                type,
+                container;
+
+            var _this = this;
+
+            container = Array.prototype.slice.call(doc.getElementsByClassName('modal-wrap'))[index-1];
+            console.log(container);
             /*
              * If content is an HTML string, append the HTML string.
              * If content is a domNode, append its content.
@@ -79,30 +90,33 @@
                 content = this.options.content.innerHTML;
             }
 
-            modalBody = document.createDocumentFragment();
-            this.modal = document.createElement("div");
-            this.modal.className = "modal-body "+this.options.className;
+            modalBody = doc.createDocumentFragment();
+            console.log(modalBody);
+            _this.modal = doc.createElement("div");
+            _this.modal.className = "modal-body "+this.options.type;
             
-            if (this.options.closeBtn === true) {
-                this.closeBtn = document.createElement("button");
-                this.closeBtn.className = "modal-close closebtn";
+            if (_this.options.closeBtn === true) {
+                _this.closeBtn = document.createElement("button");
+                _this.closeBtn.className = "modal-close closebtn";
                 //this.closeButton.innerHTML";
-                this.modal.appendChild(this.closeBtn);
+                _this.modal.appendChild(_this.closeBtn);
             }
 
-            if(this.options.overlay === true){
-                this.overlay = document.createElement("div");
-                this.overlay.className = "overlay modal-overlay";
-                modalBody.appendChild(this.overlay);
+            if(_this.options.overlay === true){
+                _this.overlay = document.createElement("div");
+                _this.overlay.className = "overlay modal-overlay";
+                modalBody.appendChild(_this.overlay);
             }
 
             contentHolder = document.createElement("div");
             contentHolder.className = "modal-content";
             contentHolder.innerHTML = content;
-            this.modal.appendChild(contentHolder);
+            _this.modal.appendChild(contentHolder);
 
-            modalBody.appendChild(this.modal);
-            document.body.appendChild(modalBody);
+            modalBody.appendChild(_this.modal);
+
+            // document.body.appendChild(modalBody);
+            container.appendChild(modalBody);
         }
 
         function extendDefaults(source, properties) {
@@ -115,8 +129,9 @@
         }
 
         function initializeEvents(){
-            if(this.closeBtn){
-                this.closeBtn.addEventListener("click",this.close.bind(this));
+            var _this = this;
+            if(_this.closeBtn){
+                _this.closeBtn.addEventListener("click",_this.close.bind(_this),false);
             }
             // if(this.overlay){
             //     this.overlay.addEventListener("click",this.close.bind(this));
@@ -138,5 +153,14 @@
                 }
             }
         }
+        buttonList.forEach(function(btn){
+            btn.addEventListener("click",function(e){
+                console.log("click");
+                var i = btn.getAttribute("data-target");
+                console.log(i);
+                //window.myModal_drop.open();
+            },false);
+        });
+        
     }
 }());

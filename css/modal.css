@@ -4,8 +4,40 @@ html, body {
   width: 100%;
   height: 100%; }
 
+*:after, *:before {
+  box-sizing: border-box;
+  clear: both; }
+
+.clear {
+  clear: both; }
+
+.modal-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto; }
+  .modal-container .modal-wrap {
+    width: 33%;
+    height: 480px;
+    border: 1px solid #E5E5E5; }
+    .modal-container .modal-wrap .modal-trigger {
+      box-sizing: border-box;
+      width: auto;
+      min-width: 120px;
+      line-height: 1.2;
+      border: 1px solid #000;
+      border-radius: 8px;
+      margin: 400px auto 0 auto; }
+
+.inline-wrap {
+  float: left;
+  position: relative; }
+  .inline-wrap:before {
+    clear: both; }
+  .inline-wrap:after {
+    clear: both; }
+
 .modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -49,9 +81,10 @@ html, body {
       transition: 400ms all 0ms ease; }
 
 .modal-body {
-  position: relative;
+  position: absolute;
   opacity: 0;
   z-index: 1001;
+  width: 100%;
   max-width: 420px;
   margin: 0 auto;
   background-color: #fff;
