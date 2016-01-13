@@ -1,6 +1,8 @@
 (function(){
     this.Modal = function(){
         var doc = document;
+        var buttonList = doc.querySelectorAll('button');
+        console.log(buttonList);
         var buttonList = Array.prototype.slice.call(doc.querySelectorAll('button'));
         console.log(buttonList);
         this.closeBtn = null;
@@ -153,14 +155,6 @@
                 }
             }
         }
-        buttonList.forEach(function(btn){
-            btn.addEventListener("click",function(e){
-                console.log("click");
-                var i = btn.getAttribute("data-target");
-                console.log(i);
-                //window.myModal_drop.open();
-            },false);
-        });
         
     }
 }());
