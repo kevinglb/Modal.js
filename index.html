@@ -6,7 +6,7 @@
         
         <link rel="stylesheet" type="text/css" href="css/modal.css" />
         <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-        <script type="text/javascript" src="js/modal.js"></script>
+       <script type="text/javascript" src="js/modal.js"></script>
 
         <title>Modal JS Test</title>
     </head>
@@ -14,13 +14,19 @@
     <body>
       <div class="modal-container">
         <div class="modal-wrap inline-wrap">
-          <button class="button modal-trigger" data-target="1">Click Me(Drop)</button>
+          <div class="btn-wrap">
+            <button class="button modal-trigger" data-target="1" data-modal-type="drop">Click Me(Drop)</button>
+          </div>
         </div>
         <div class="modal-wrap inline-wrap">
-          <button class="button modal-trigger" data-target="2">Click Me(Expand)</button>
+          <div class="btn-wrap">
+            <button class="button modal-trigger" data-target="2" data-modal-type="expand">Click Me(Expand)</button>
+          </div>
         </div>  
         <div class="modal-wrap inline-wrap">
-          <button class="button modal-trigger" data-target="3">Click Me(Fade)</button>
+          <div class="btn-wrap">
+            <button class="button modal-trigger" data-target="3" data-modal-type="fade">Click Me(Fade)</button>
+          </div>
         </div>       
       </div>
       <script type="text/javascript">
@@ -31,6 +37,8 @@
           });
           $(".button").click(function(e){
             var i = this.getAttribute("data-target");
+            var modalType = this.getAttribute("data-modal-type");
+            
             myModal_drop.open(i);
             });
         });

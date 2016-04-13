@@ -1,10 +1,10 @@
 (function(){
     this.Modal = function(){
         var doc = document;
-        var buttonList = doc.querySelectorAll('button');
-        console.log(buttonList);
-        var buttonList = Array.prototype.slice.call(doc.querySelectorAll('button'));
-        console.log(buttonList);
+        // var buttonList = doc.querySelectorAll('button');
+        //console.log(buttonList);
+        //  
+        //console.log(buttonList);
         this.closeBtn = null;
         this.modal = null;
         this.overlay = null;
